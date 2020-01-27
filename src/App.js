@@ -1,20 +1,17 @@
-import React, { Component, useState } from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from './context/AppContext';
 import Amount  from './components/Amount';
 import Controls from './components/Control';
 
 function App() {
-  const priceOfTheCig = parseFloat(11.87 / 20).toFixed(2);;
-  const [amount, setAmount] = useState(0);
-
-  function deposit(value) {
-    setAmount(( amount + (priceOfTheCig * value)));
-  }
+  const { amount } = useContext(AppContext);
 
   return (
     <div className="app-container">
       <Amount value={amount} />
       <div className="separator" />
-      <Controls onAddCiggie={deposit} />
+      {/* <Controls onAddCiggie={deposit} /> */}
+      <Controls/>
     </div>
   )
 }
